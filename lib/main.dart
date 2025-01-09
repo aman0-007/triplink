@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:triplink/themes.dart';
 
+import 'screens/login_screen/login_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: TripLinkTheme.lightTheme,
       darkTheme: TripLinkTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const MyHomePage(),
+      home: const LoginScreen(),
     );
   }
 }
@@ -46,6 +48,19 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatingActionButton(
               onPressed: () {},
               child: const Icon(Icons.add),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: "Enter your name",
+                hintText: "John Doe",
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: "Enter your email",
+                hintText: "example@mail.com",
+              ),
             ),
           ],
         ),

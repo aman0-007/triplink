@@ -47,11 +47,11 @@ class TripLinkTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: lightColorScheme.primary),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: lightColorScheme.primary, width: 2),
       ),
     ),
