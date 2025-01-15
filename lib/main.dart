@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:triplink/screens/onboard/onboard_screen.dart';
 import 'package:triplink/themes.dart';
 
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: TripLinkTheme.lightTheme,
       darkTheme: TripLinkTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const MyHomePage(),
+      home: const OnboardScreen(),
     );
   }
 }
