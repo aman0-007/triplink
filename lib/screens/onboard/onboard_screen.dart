@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:triplink/screens/onboard/onboard.dart';
 import 'package:triplink/screens/onboard/theme/colors.dart';
 import 'package:triplink/screens/onboard/widgets/on_boardnavigation.dart';
+import 'package:triplink/screens/onboard/widgets/page_indicator.dart';
 
 class OnboardScreen extends StatefulWidget {
   const OnboardScreen({super.key});
@@ -43,7 +44,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _pages.length == 1 ? Color(0xFFfffaff) : Color(0xFFffffff),
+      backgroundColor: _currentIndex == 1 ? Color(0xFFfffaff) : Color(0xFFffffff),
       body: SafeArea(
           child: Column(
             children: [
@@ -62,11 +63,13 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 child: PageView(
                   controller: _pageController,
                   onPageChanged: (index) {
+                    print(_currentIndex);
                     setState(() => _currentIndex = index);
                   },
                   children: _pages,
                 ),
               ),
+              PageIndicator(currentIndex: _currentIndex, totalPages: _pages.length),
               OnboardNavigation(
                 currentIndex: _currentIndex,
                 totalPages: _pages.length,
