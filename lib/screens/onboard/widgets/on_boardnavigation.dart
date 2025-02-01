@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:triplink/screens/afteronboard/afteronboard_screen.dart';
 import 'package:triplink/screens/onboard/theme/colors.dart';
+
+import '../../screen_change_anim.dart';
 
 class OnboardNavigation extends StatelessWidget{
   final int currentIndex;
@@ -49,7 +52,15 @@ class OnboardNavigation extends StatelessWidget{
                     borderRadius: BorderRadius.circular(10),
                   )
                 ),
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    AnimatedPageTransition(
+                      page: AfteronboardScreen(),
+                      transitionType: TransitionType.slideFromRight,
+                    )
+                  );
+                },
                 child: const Text(
                   "Explore",
                   style: TextStyle(fontSize: 20),
