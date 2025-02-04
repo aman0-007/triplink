@@ -8,26 +8,13 @@ class PasswordRulesButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         CustomSnackbar.showSnackbar(
-          message: "• Must be at least 8 characters long\n"
-                        "• Must contain at least one uppercase letter\n"
-                        "• Must contain at least one number\n"
-                        "• Must contain at least one special character",
-                    backgroundColor: TripLinkTheme.lightColorScheme.primary,
-                    textColor: Colors.white,
-                    icon: Icons.check_circle,
-          duration: 0.3,
-              );
-
-        // CustomSnackbar.show(
-        //   context,
-        //   message: "• Must be at least 8 characters long\n"
-        //       "• Must contain at least one uppercase letter\n"
-        //       "• Must contain at least one number\n"
-        //       "• Must contain at least one special character",
-        //   backgroundColor: TripLinkTheme.lightColorScheme.primary,
-        //   textColor: Colors.white,
-        //   icon: Icons.check_circle, // Custom icon
-        // );
+          context,
+          "• Must be at least 8 characters long\n• Must contain at least one uppercase letter\n• Must contain at least one number\n• Must contain at least one special character",
+          backgroundColor: TripLinkTheme.lightColorScheme.primary,
+          textColor: Colors.white,
+          //icon: Icons.check_circle,
+          duration: Duration(seconds: 3),
+        );
       },
       child: Container(
         decoration: BoxDecoration(

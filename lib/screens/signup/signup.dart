@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:triplink/screens/register/components/button.dart';
 import 'package:triplink/screens/register/components/dashlinetext.dart';
 import 'package:triplink/screens/register/components/passwordrules.dart';
-import 'components/termsandprivacytext.dart';
-import 'components/textfield.dart';
+import '../register/components/termsandprivacytext.dart';
+import '../register/components/textfield.dart';
+import '../register/register_screen.dart';
+import '../screen_change_anim.dart';
+import 'components/forgotpasswordtext.dart';
 
-class Register extends StatelessWidget {
+class Signup extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -19,57 +19,38 @@ class Register extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomTextField(
-            icon: Icons.person_outlined,
-            hintText: 'First Name',
-            keyboardType: TextInputType.name,
-            controller: _firstNameController,
-          ),
-          SizedBox(height: 20),
-          CustomTextField(
-            icon: Icons.person_outlined,
-            hintText: 'Last Name',
-            keyboardType: TextInputType.name,
-            controller: _lastNameController,
-          ),
-          SizedBox(height: 20),
-
-          CustomTextField(
             icon: Icons.email_outlined,
-            hintText: 'Email Address',
+            hintText: 'Email/Phone',
             keyboardType: TextInputType.emailAddress,
             controller: _emailController,
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           CustomTextField(
-            icon: Icons.phone_outlined,
-            hintText: 'Phone Number',
-            keyboardType: TextInputType.phone,
-            controller: _numberController,
-          ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              Expanded(
-                child: CustomTextField(
-                  icon: Icons.password_outlined,
-                  hintText: 'Password',
-                  keyboardType: TextInputType.visiblePassword,
-                  controller: _passwordController,
-                ),
-              ),
-              SizedBox(width: 4),
-              PasswordRulesButton()
-            ],
+            icon: Icons.password_outlined,
+            hintText: 'Password',
+            keyboardType: TextInputType.visiblePassword,
+            controller: _passwordController,
           ),
           SizedBox(height: 20),
           CustomButton(
-            text: 'Create Account',
+            text: 'Sign Up',
             onPressed: () {
-              print('Primary button pressed');
+              Navigator.push(
+                context,
+                AnimatedPageTransition(
+                  page: RegisterScreen(),
+                  transitionType: TransitionType.fade,
+                ),
+              );
             },
+            padding: EdgeInsets.only(top: 13, bottom: 5),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: ForgotPasswordText(),
           ),
           DashedLineWithText(text: "OR"),
           SizedBox(height: 20),

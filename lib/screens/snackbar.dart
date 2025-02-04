@@ -22,9 +22,9 @@ class CustomSnackbar {
         content: snackBar,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        duration: duration,
-        behavior: SnackBarBehavior.floating, // Ensures floating snackbar
-        margin: const EdgeInsets.all(16),   // Adds spacing around snackbar
+        duration: duration + const Duration(milliseconds: 500), // Ensure enough time for slide down
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(16),
       ),
     );
   }
@@ -37,7 +37,8 @@ class CustomSnackBarWidget extends StatelessWidget {
   final IconData icon;
   final Duration duration;
 
-  const CustomSnackBarWidget({super.key,
+  const CustomSnackBarWidget({
+    super.key,
     required this.message,
     required this.backgroundColor,
     required this.textColor,
@@ -99,6 +100,29 @@ class _AnimatedSnackbarState extends State<_AnimatedSnackbar>
     ));
 
     _controller.forward();
+
+    // Wait for the full duration, then play the slide-down animation
+    Future.delayed(widget.duration, () {
+      if (mounted) {
+        _slideDown();
+      }
+    });
+  }
+
+  void _slideDown() {
+    _offsetAnimation = Tween<Offset>(
+      begin: Offset.zero, // Start at normal position
+      end: const Offset(0, 1), // Move down out of the screen
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeIn, // Smooth slide down
+    ));
+
+    _controller.reverse().then((_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      }
+    });
   }
 
   @override
@@ -107,7 +131,6 @@ class _AnimatedSnackbarState extends State<_AnimatedSnackbar>
       position: _offsetAnimation,
       child: Stack(
         children: [
-          // Thin progress bar at the top
           Positioned(
             top: 0,
             left: 0,
@@ -118,7 +141,6 @@ class _AnimatedSnackbarState extends State<_AnimatedSnackbar>
               value: _controller.value,
             ),
           ),
-          // Main snackbar content
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             decoration: BoxDecoration(
@@ -134,6 +156,7 @@ class _AnimatedSnackbarState extends State<_AnimatedSnackbar>
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(widget.icon, color: widget.textColor, size: 24),
                 const SizedBox(width: 12),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../onboard/theme/colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -7,39 +6,40 @@ class CustomButton extends StatelessWidget {
   final Function onPressed;
   final Color buttonColor;
   final Color textColor;
-  final double width; // Added width parameter
+  final double width;
+  final EdgeInsetsGeometry padding; // Added padding parameter
 
   CustomButton({
     required this.text,
     required this.onPressed,
     this.buttonColor = SplashColors.lightOrange,
-    this.textColor = Colors.black, // Default text color is white
-    this.width = double.infinity, // Default width set to full width
+    this.textColor = Colors.black,
+    this.width = double.infinity,
+    this.padding = const EdgeInsets.only(top: 13.0, bottom: 25, left: 0, right: 0), // Default padding
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 13.0, bottom: 25),
+      padding: padding, // Use the provided padding
       child: Container(
-        width: width, // Set the width of the button
+        width: width,
         child: ElevatedButton(
           onPressed: () => onPressed(),
           style: ElevatedButton.styleFrom(
-            backgroundColor: buttonColor, // Background color of the button
+            backgroundColor: buttonColor,
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10), // Rounded corners
+              borderRadius: BorderRadius.circular(10),
             ),
-            shadowColor: SplashColors.mediumBlue, // Shadow color
-            elevation: 2, // Button elevation
+            shadowColor: SplashColors.mediumBlue,
+            elevation: 2,
           ),
           child: Text(
             text,
             style: TextStyle(
-              color: textColor, // Text color
+              color: textColor,
               fontSize: 16,
-              // fontWeight: FontWeight.bold, // Bold text
             ),
           ),
         ),

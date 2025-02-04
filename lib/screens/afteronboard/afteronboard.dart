@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:triplink/screens/register/register_screen.dart';
 import 'package:triplink/screens/screen_change_anim.dart';
 
+import '../signup/signup_screen.dart';
+
 class Afteronboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,13 @@ class Afteronboard extends StatelessWidget {
               ),
               icon: const Icon(Icons.login),
               onPressed: () {
-                // Sign In logic
+                Navigator.push(
+                  context,
+                  AnimatedPageTransition(
+                    page: SignupScreen(),
+                    transitionType: TransitionType.fade,
+                  ),
+                );
               },
               label: const Text("Sign In"),
             ),
