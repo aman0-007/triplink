@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:triplink/screens/forgotpassword/forgotpassword.dart';
 
+import '../../forgotpassword/forgotpassword_screen.dart';
 import '../../register/register_screen.dart';
 import '../../screen_change_anim.dart';
 
@@ -14,7 +16,7 @@ class ForgotPasswordText extends StatelessWidget {
             Navigator.push(
               context,
               AnimatedPageTransition(
-                page: RegisterScreen(),
+                page: ForgotpasswordScreen(),
                 transitionType: TransitionType.fade,
               ),
             );
