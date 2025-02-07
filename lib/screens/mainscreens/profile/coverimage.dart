@@ -4,10 +4,10 @@ class CoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 250,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage('https://via.placeholder.com/1500x500'), // Replace with your cover image URL
+          image: NetworkImage('https://t3.ftcdn.net/jpg/01/21/00/84/240_F_121008469_o4lvIDitZB42YfGdrDJlxEPvioY2aaGF.jpg'), // Replace with your cover image URL
           fit: BoxFit.cover,
         ),
       ),

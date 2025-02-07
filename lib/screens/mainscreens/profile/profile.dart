@@ -1,27 +1,50 @@
 import 'package:flutter/material.dart';
-
 import 'contactdetails.dart';
 import 'coverimage.dart';
+import 'madewithlovetext.dart';
 import 'personaldetails.dart';
 import 'profileimage.dart';
 
 class Profile extends StatelessWidget {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final double buttonWidth = MediaQuery.of(context).size.width * 0.4;
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Stack(children: [
             CoverImage(),
-            ProfileImage(),
-            PersonalDetails(),
-            ContactDetails(),
-          ],
-        ),
+            AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.white),
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+              ),
+              title: Text(
+                "Profile",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          ]),
+          Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
+            children: [
+              PersonalDetails(),
+              ProfileImage(),
+            ],
+          ),
+          ContactDetails(),
+          Spacer(),
+          MadeWithLoveText(),
+        ],
       ),
     );
   }
