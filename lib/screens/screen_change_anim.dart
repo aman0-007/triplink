@@ -9,7 +9,13 @@ enum TransitionType {
   slideFromTop,
   slideFromBottom,
   scale,
-  rotate
+  rotate,
+  flip,
+  zoom,
+  bounce,
+  slideFade,
+  shrink,
+  expand,
 }
 
 class AnimatedPageTransition extends PageRouteBuilder {
@@ -41,6 +47,18 @@ class AnimatedPageTransition extends PageRouteBuilder {
           return _buildScaleTransition(animation, secondaryAnimation, child);
         case TransitionType.rotate:
           return _buildRotateTransition(animation, secondaryAnimation, child);
+        case TransitionType.flip:
+          return _buildFlipTransition(animation, secondaryAnimation, child);
+        case TransitionType.zoom:
+          return _buildZoomTransition(animation, secondaryAnimation, child);
+        case TransitionType.bounce:
+          return _buildBounceTransition(animation, secondaryAnimation, child);
+        case TransitionType.slideFade:
+          return _buildSlideFadeTransition(animation, secondaryAnimation, child);
+        case TransitionType.shrink:
+          return _buildShrinkTransition(animation, secondaryAnimation, child);
+        case TransitionType.expand:
+          return _buildExpandTransition(animation, secondaryAnimation, child);
         default:
           return child;
       }
@@ -115,5 +133,48 @@ class AnimatedPageTransition extends PageRouteBuilder {
         RotationTransition(turns: rotateIn, child: child), // For page in (entry)
       ],
     );
+  }
+
+  static Widget _buildFlipTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    return AnimatedBuilder(
+      animation: animation,
+      child: child,
+      builder: (context, child) {
+        final angle = animation.value * 3.1416;
+        return Transform(
+          transform: Matrix4.rotationY(angle),
+          alignment: Alignment.center,
+          child: child,
+        );
+      },
+    );
+  }
+
+  static Widget _buildZoomTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    return ScaleTransition(scale: Tween(begin: 0.0, end: 1.0).animate(animation), child: child);
+  }
+
+  static Widget _buildBounceTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    return SlideTransition(
+      position: Tween(begin: Offset(0, 1), end: Offset.zero)
+          .chain(CurveTween(curve: Curves.bounceOut))
+          .animate(animation),
+      child: child,
+    );
+  }
+
+  static Widget _buildSlideFadeTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    return FadeTransition(
+      opacity: animation,
+      child: SlideTransition(position: animation.drive(Tween(begin: Offset(1.0, 0.0), end: Offset.zero)), child: child),
+    );
+  }
+
+  static Widget _buildShrinkTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    return ScaleTransition(scale: Tween(begin: 1.0, end: 0.0).animate(secondaryAnimation), child: child);
+  }
+
+  static Widget _buildExpandTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+    return ScaleTransition(scale: Tween(begin: 0.0, end: 1.0).animate(animation), child: child);
   }
 }

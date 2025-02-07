@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:triplink/screens/register/components/button.dart';
 import 'package:triplink/screens/register/components/dashlinetext.dart';
 import 'package:triplink/screens/register/components/passwordrules.dart';
+import '../mainscreens/profile/profile_screen.dart';
 import '../register/components/termsandprivacytext.dart';
 import '../register/components/textfield.dart';
 import '../register/register_screen.dart';
@@ -11,7 +12,6 @@ import 'components/forgotpasswordtext.dart';
 class Signup extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +41,8 @@ class Signup extends StatelessWidget {
               Navigator.push(
                 context,
                 AnimatedPageTransition(
-                  page: RegisterScreen(),
-                  transitionType: TransitionType.fade,
+                  page: ProfileScreen(),
+                  transitionType: TransitionType.zoom,
                 ),
               );
             },
