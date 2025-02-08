@@ -93,12 +93,14 @@ class AnimatedPageTransition extends PageRouteBuilder {
 
     return Stack(
       children: [
-        SlideTransition(position: slideOutAnimation, child: child), // For page out (exit)
-        SlideTransition(position: offsetAnimation, child: child), // For page in (entry)
+        // For page out (exit): This is the old page sliding out
+        SlideTransition(position: slideOutAnimation, child: child),
+
+        // For page in (entry): This is the new page sliding in from the bottom
+        SlideTransition(position: offsetAnimation, child: child),
       ],
     );
   }
-
   // Scale transition helper function (handles both entry and exit)
   static Widget _buildScaleTransition(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
     const curve = Curves.easeInOut;

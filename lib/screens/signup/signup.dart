@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:triplink/screens/register/components/button.dart';
 import 'package:triplink/screens/register/components/dashlinetext.dart';
 import 'package:triplink/screens/register/components/passwordrules.dart';
+import '../mainscreens/bottomnavigation/bottomnavigation.dart';
 import '../mainscreens/profile/profile_screen.dart';
 import '../register/components/termsandprivacytext.dart';
 import '../register/components/textfield.dart';
@@ -41,7 +42,8 @@ class Signup extends StatelessWidget {
               Navigator.push(
                 context,
                 AnimatedPageTransition(
-                  page: ProfileScreen(),
+                  page: TripLinkBottomNavigation(),
+                  //page: ProfileScreen(),
                   transitionType: TransitionType.zoom,
                 ),
               );

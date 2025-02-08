@@ -14,24 +14,24 @@ class Profile extends StatelessWidget {
         children: [
           Stack(children: [
             CoverImage(),
-            AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-              ),
-              title: Text(
-                "Profile",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
+            // AppBar(
+            //   backgroundColor: Colors.transparent,
+            //   elevation: 0,
+            //   leading: IconButton(
+            //     icon: Icon(Icons.arrow_back, color: Colors.white),
+            //     onPressed: (){
+            //       Navigator.pop(context);
+            //     },
+            //   ),
+            //   title: Text(
+            //     "Profile",
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //       fontSize: 20,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // )
           ]),
           Stack(
             alignment: Alignment.center,
@@ -42,7 +42,9 @@ class Profile extends StatelessWidget {
             ],
           ),
           ContactDetails(),
-          Spacer(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.07, // Adjust this value to control the bottom space
+          ),
           MadeWithLoveText(),
         ],
       ),
