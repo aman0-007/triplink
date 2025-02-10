@@ -6,17 +6,6 @@ import 'widgets/faq.dart';
 import 'widgets/search_bar.dart';
 
 class HelpSupportScreen extends StatelessWidget {
-  final List<FAQCategory> faqCategories = [
-    FAQCategory(
-      categoryName: "Account & Profile",
-      faqs: [
-        FAQ(question: "How do I reset my password?", answer: "Go to Settings > Account > Reset Password."),
-        FAQ(question: "How do I update my profile information?", answer: "Go to Profile > Edit."),
-      ],
-    ),
-    // Add more categories and FAQs
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +24,7 @@ class HelpSupportScreen extends StatelessWidget {
             SearchBarWidget(onSearch: (query) {
               // Implement search functionality
             }),
-            FAQWidget(faqCategories: faqCategories),
+            FAQWidget(),
             ContactSupportWidget(),
             AdditionalResourcesWidget(),
           ],

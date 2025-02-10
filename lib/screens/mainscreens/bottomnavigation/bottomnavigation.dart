@@ -4,6 +4,7 @@ import 'package:triplink/screens/mainscreens/profile/profile_screen.dart';
 import '../../onboard/theme/colors.dart';
 import '../blog/blog_screen.dart';
 import '../help_support/help_support_screen.dart';
+import '../homepage/home_screen.dart';
 
 const Color inActiveIconColor = Color(0xFFB6B6B6);
 
@@ -27,9 +28,7 @@ class _TripLinkBottomNavigationState extends State<TripLinkBottomNavigation> {
     ProfileScreen(),
     BlogScreen(),
     HelpSupportScreen(),
-    const Center(
-      child: Text("Profile Page"), // Page shown when 'Profile' is clicked
-    ),
+    DashboardScreen()
   ];
 
   @override
