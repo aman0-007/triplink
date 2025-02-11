@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:triplink/screens/mainscreens/dashboard/widgets/adventurecard.dart';
 import 'package:triplink/screens/mainscreens/dashboard/widgets/tripcard.dart';
 
