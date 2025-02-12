@@ -28,7 +28,7 @@ class _TripLinkBottomNavigationState extends State<TripLinkBottomNavigation> {
     ProfileScreen(),
     BlogScreen(),
     HelpSupportScreen(),
-    DashboardScreen()
+    HomeScreen()
   ];
 
   @override
