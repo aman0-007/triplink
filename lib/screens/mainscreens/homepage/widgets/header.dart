@@ -68,6 +68,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ? MediaQuery.of(context).size.width - 100
                 : 48,
             curve: Curves.easeInOut,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -76,10 +79,29 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     autofocus: true,
                     decoration: InputDecoration(
                       hintText: 'Search destinations...',
-                      hintStyle: TextStyle(color: SplashColors.textColor.withOpacity(0.7)),
-                      border: InputBorder.none,
+                      hintStyle: TextStyle(
+                          color: SplashColors.textColor.withOpacity(0.7)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: SplashColors.lightBlue.withOpacity(0.5),
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: SplashColors.lightBlue.withOpacity(0.5),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: SplashColors.lightBlue,
+                        ),
+                      ),
                       prefixIcon: IconButton(
-                        icon: Icon(Icons.arrow_back, color: SplashColors.iconColor),
+                        icon: Icon(Icons.arrow_back,
+                            color: SplashColors.iconColor),
                         onPressed: _toggleSearch,
                       ),
                     ),
